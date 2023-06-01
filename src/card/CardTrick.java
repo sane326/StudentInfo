@@ -37,6 +37,13 @@ public class CardTrick {
             System.out.println(card.getSuit() + " - " + card.getValue());
         }
         
+        
+        // Hard-coded lucky card
+        Card luckyCard = new Card();
+        luckyCard.setSuit("Spades");
+        luckyCard.setValue(10);
+
+        
         // Prompting the user to pick a card
         Scanner scanner = new Scanner(System.in);
         System.out.print("Pick a card (Enter the suit and value): ");
@@ -49,19 +56,19 @@ public class CardTrick {
         userCard.setSuit(userSuit);
         userCard.setValue(userValue);
         
-        boolean found = false;
+        boolean draw = false;
         for (Card card : magicHand) {
-            if (card.getSuit().equals(userCard.getSuit()) && card.getValue() == userCard.getValue()) {
-                found = true;
+            if (card.getSuit().equals(luckyCard.getSuit()) && card.getValue() == luckyCard.getValue()) {
+                draw = true;
                 break;
             }
         }
         
         // Report whether the user's card is in the magicHand
-        if (found) {
-            System.out.println("Hurray! Your card is in the magic hand.");
+        if (draw) {
+            System.out.println("Hurray! You found the lucky card.");
         } else {
-            System.out.println("Better luck next time.");
+            System.out.println("Sorry! The lucky card is not in the magic hand.");
         }
     }
 }
